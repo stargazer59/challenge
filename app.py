@@ -28,17 +28,26 @@ def results():
 
 @app.route('/interview/api/v1.0/results/<int:number>', methods=['GET'])
 def results_with_limit(number):
-    return get_results(number)
+    try:
+        return get_results(number)
+    except Exception as e:
+        print('Bad Request: ', e)
 
 
 @app.route('/interview/api/v1.0/resultsForArea/<string:area_code>', methods=['GET'])
 def results_by_area(area_code):
-    return get_results_by_area(area_code)
+    try:
+        return get_results_by_area(area_code)
+    except Exception as e:
+        print('Bad Request: ', e)
 
 
 @app.route('/interview/api/v1.0/resultsForArea/<string:area_code>/<int:number>', methods=['GET'])
 def results_by_area_with_limit(area_code, number):
-    return get_results_by_area(area_code, number)
+    try:
+        return get_results_by_area(area_code, number)
+    except Exception as e:
+        print('Bad Request: ', e)
 
 
 if __name__ == '__main__':
